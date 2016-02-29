@@ -2,6 +2,7 @@ require 'Prime'
 
 class Raindrops
   VERSION = 1
+
   def self.convert(num)
     result = ""
     factors = Prime.prime_division(num).flatten
