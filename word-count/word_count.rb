@@ -1,20 +1,19 @@
 class Phrase
+  attr_accessor :word_count
   VERSION = 1
 
   def initialize(text)
     @text = text
-    @hashed = false
-    @word_hash = {}
+    @word_count ||= count
   end
 
-  def word_count
-    return @word_hash if @hashed
+  def count
+    word_count = Hash.new(0)
     word_array.map { |word| clean(word) }.each do |word|
       next if word.empty?
-      @word_hash[word] = @word_hash[word].nil? ? 1 : @word_hash[word] + 1
+      word_count[word] += 1
     end
-    @hashed = true
-    @word_hash
+    word_count
   end
 
   def word_array
