@@ -13,13 +13,14 @@ class Sieve
   end
 
   def primes
-    2.upto(@limit) do |i|
+    @hash.each do |key, value|
+      next unless value == "prime"
       multiplier = 2
-      product = i * multiplier
+      product = key * multiplier
       while product <= @limit
         @hash[product] = "not prime"
         multiplier += 1
-        product = i * multiplier
+        product = key * multiplier
       end
     end
     @hash = @hash.select { |_key, value| value == "prime" }
