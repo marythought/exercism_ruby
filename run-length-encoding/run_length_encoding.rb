@@ -24,7 +24,7 @@ class RunLengthEncoding
     number_stack = []
     result = ""
     input.length.times do
-      if /[0-9]/.match(input[0])
+      if input[0] =~ /[0-9]/
         number_stack << input.shift
       else
         number_stack = [1] if number_stack.join.to_i == 0
